@@ -1,0 +1,32 @@
+<div id="new-book">
+
+  <div [style.display]="selectedItem ? 'none' : 'block'" class="searchbar-container w3-win-metro-light-blue">
+    <form #form="ngForm" class="w3-border">
+      <label></label>
+      <input type="search" #search name="query" [ngModel]="query" placeholder="Zoek boek op titel, naam van schrijver of ISBN ..." class="w3-input w3-border-0">
+      <button (click)=clearInput() class="w3-button w3-light-gray">&times;</button>
+    </form>
+  </div>
+
+  <div *ngIf="searchResultItems$ | async as searchResultItems" class="list-container w3-container">
+    <ul *ngIf="!(selectedItem || searching)" class="w3-ul">  
+      <li *ngFor="let searchResultItem of searchResultItems" (click)=select(searchResultItem)>
+        <img [src]="searchResultItem.smallImgUrl">
+        <p>{{searchResultItem.title}}</p>
+        <p>{{searchResultItem.authorName}}</p>
+      </li>
+    </ul>
+    <div *ngIf="searchResultItems.length === 0  && !searchError" class="w3-panel w3-pale-yellow">
+      <p class>Geen zoekresultaten.</p>
+    </div>   
+  </div>
+  <div *ngIf="searchError" class="w3-panel w3-pale-red">
+    <p>Verbinding met de database mislukt. Probeer een nieuwe zoekopdracht.</p>
+  </div> 
+
+  <div class="spinner" *ngIf="searching" [innerHTML]="spinner">
+  </div>
+
+</div>
+
+<jr-selected-book *ngIf="selectedItem" [selectedItem]="selectedItem" (deselectItem)="deselect($event)"></jr-selected-book>

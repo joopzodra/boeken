@@ -1,0 +1,53 @@
+<div id="edit-book" class="w3-container">
+
+  <div *ngIf="book$ | async as book else noBookBlock">
+    <h2>{{book.title}}</h2>
+    <p class="author">{{book.authorName}}</p>
+
+    <form novalidate (ngSubmit)="editBook(book, form.value)" #form="ngForm">
+      <fieldset>
+        <legend>Aantal sterren:</legend>
+        <label>1</label>
+        <input type="radio" name="rating" value="1" [ngModel]="book.rating?.toString()" class="w3-radio">
+        <label>2</label>
+        <input type="radio" name="rating" value="2" [ngModel]="book.rating?.toString()" class="w3-radio">
+        <label>3</label>
+        <input type="radio" name="rating" value="3" [ngModel]="book.rating?.toString()" class="w3-radio">
+        <label>4</label>
+        <input type="radio" name="rating" value="4" [ngModel]="book.rating?.toString()" class="w3-radio">
+        <label>5</label>
+        <input type="radio" name="rating" value="5" [ngModel]="book.rating?.toString()" class="w3-radio">
+      </fieldset>
+      <div class="w3-margin-top">
+        <label>Zet op mijn leeslijst:</label>
+        <input type="checkbox" name="onReadingList" [ngModel]="book.onReadingList" class="w3-check">
+      </div>
+      <div class="w3-margin-top">
+        <label>Dit boek heb ik in mijn bezit:</label>
+        <input type="checkbox" name="owned" [ngModel]="book.owned" class="w3-check">
+      </div>
+      <div class="w3-margin-top">
+        <label>Uitgeleend aan:</label>
+        <input type="text" name="lentTo" [ngModel]="book.lentTo" placeholder="niet uitgeleend" class="w3-input">      
+      </div>
+      <div class="w3-margin-top">
+        <label>Beschrijving:</label>
+        <textarea rows=10 name="description" [ngModel]="book.description" class="w3-input"></textarea> 
+      </div>
+      <div class="w3-margin-top w3-bar w3-padding-32">
+        <button (click)="back()" class="cancel w3-button w3-win-metro-dark-orange w3-margin-left"><span class="bold">X</span>&nbsp;&nbsp;Annuleren</button>
+        <button type="submit" class="submit w3-button w3-win-metro-dark-orange w3-margin-right"><span class="bold">&#10004;</span>&nbsp;&nbsp;Opslaan</button>  
+      </div>
+    </form>
+  </div>
+
+  <ng-template #noBookBlock>
+    <div class="no-item w3-panel w3-pale-yellow">
+      <p>Het boek dat je wilt wijzigen is niet opgeslagen. Je kunt het toevoegen met '+ Nieuw boek'.</p>
+    </div>
+  </ng-template>
+
+  <div class="spinner" *ngIf="searching" [innerHTML]="spinner">
+  </div>
+
+</div>

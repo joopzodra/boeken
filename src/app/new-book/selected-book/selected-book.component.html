@@ -1,0 +1,42 @@
+<div id="selected-book" class="w3-container">
+
+  <div *ngIf="book$ | async as book else spinnerBlock">
+    <div class="w3-bar">
+      <button (click)="deselect()" class="w3-button w3-win-metro-dark-orange w3-margin-right">Terug naar zoekresultaten</button> 
+      <button (click)="save(book)" class="w3-button w3-win-metro-dark-orange w3-margin-right">Dit boek opslaan</button> 
+    </div>
+    <div *ngIf="confirmSave" class="w3-modal">
+      <div class="w3-modal-content">
+        <h2 class="w3-container w3-win-metro-dark-blue">Boek overschrijven?</h2>
+        <div class="w3-container">
+          <p>Dit boek heb je al eerder opgeslagen.<br><br>Als je het nu opnieuw opslaat, gaat wat je eerder aan het boek hebt toegevoegd verloren (de waardering, of je het in bezit hebt, of je uitgeleend hebt en een aanpassing van de beschrijving).<br><br>Wil je het boek toch opnieuw opslaan?</p>
+        </div>
+        <div class="w3-container w3-bar w3-padding-32">
+          <button (click)="cancelSave()" class="w3-button w3-win-metro-dark-orange w3-margin-right">Annuleer</button>
+          <button (click)="saveConfirmed(book)" class="w3-button w3-win-metro-dark-orange w3-margin-left">Ja, sla opnieuw op</button>
+        </div>
+      </div>
+    </div>
+    <h2>{{book.title}}</h2>
+    <p class="author">{{book.authorName}}</p>
+    <p>Voor het eerst verschenen in: {{book.year}}</p>
+    <img src="{{book.img}}">
+    <div *ngIf="book.description" class="selected-book-description">
+      <h3>Beschrijving</h3>
+      <p [innerHTML]="book.description"></p>
+    </div> 
+  </div>
+
+  <ng-template #spinnerBlock>
+    <div class="spinner" [innerHTML]="spinner">
+    </div>
+  </ng-template>
+
+  <div *ngIf="searchError" class="w3-panel w3-pale-red">
+    <p>Verbinding met de database mislukt. Ga terug naar de zoekresultaten en selecteer het boek opnieuw.</p>
+    <div class="w3-bar">
+      <button (click)="deselect()" class="w3-button w3-win-metro-dark-orange w3-margin-right">Terug naar zoekresultaten</button> 
+    </div>
+  </div>
+  
+</div>

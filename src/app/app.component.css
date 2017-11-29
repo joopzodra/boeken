@@ -1,0 +1,42 @@
+#app {
+  max-width: 670px;
+  margin: 0 auto;
+}
+
+.fixed-header {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width:  100%;
+  max-width: 670px;
+}
+
+.main-container {
+  padding:  185px 0 25px;
+  border: 2px #e3a21a solid; /* color: w3-win-metro-orange */
+  min-height: 100vh;
+}
+
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 670px;
+}
+
+footer {
+  height: 25px;
+}
+
+@media (min-width: 420px) {
+  .main-container {
+    padding-top: 195px;
+  }  
+}
+
+@media (min-width: 601px) {
+  .main-container {
+    padding-top: 116px;
+  }
+
+}

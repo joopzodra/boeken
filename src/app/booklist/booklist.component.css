@@ -1,0 +1,16 @@
+form {
+  display: flex;
+}
+.image-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+.author-and-rating-container {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+}
+.author-and-rating-container p {
+  text-align: right;
+}

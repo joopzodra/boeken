@@ -1,0 +1,33 @@
+<div id="author-item" class="w3-container">
+
+  <div *ngIf="authorData$ | async as authorData">
+    <div *ngIf="authorData.authors[0] else noAuthorBlock">
+      <h2>{{authorData.authors[0].name}}</h2>
+      <div>
+        <ul class="w3-ul">
+          <li *ngFor="let book of authorData.books" (click)="onSelect(book)">
+            <p>{{book.title}}</p>
+            <div class="image-container">
+              <img src="{{book.imgSmall}}">
+              <p *ngIf="book.rating">
+                <span class="w3-text-win-metro-yellow" *ngFor="let n of [1,2,3,4,5]">{{book.rating >= n ? '★' : '☆' }}</span>
+              </p>
+            </div>
+          </li>
+        </ul>
+        <div *ngIf="authorData.books.length === 0" class="no-item w3-panel w3-pale-yellow">
+          <p>Er zijn geen boeken van deze schrijver opgeslagen. Je kunt boeken toevoegen met '+ Nieuw boek'.</p>
+        </div>    
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noAuthorBlock>
+    <div class="no-item w3-panel w3-pale-yellow" *ngIf="!searching">
+      <p>De schrijver die je zoekt is niet opgeslagen. Je kunt met '+ Nieuw boek' een boek toevoegen van de schrijver. Dan wordt ook de schrijver opgeslagen.</p>
+    </div>
+  </ng-template>
+
+  <div class="spinner" *ngIf="searching" [innerHTML]="spinner">
+  </div>
+</div>

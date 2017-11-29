@@ -1,0 +1,16 @@
+#selected-book {
+  margin-top: -20px;
+}
+
+.author {
+  font-weight: 700;
+}
+.selected-book-description {
+  padding-bottom: 32px;
+}
+.w3-bar {
+  text-align: center;
+}
+.w3-button {
+  margin-bottom: 4px;
+}

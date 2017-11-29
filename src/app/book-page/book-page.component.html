@@ -1,0 +1,53 @@
+<div id="book-item" class="w3-container">
+
+  <div *ngIf="book$ | async as book else noBookBlock">
+
+    <div *ngIf="book.id !== 0 else noBookBlock">
+      <h2>{{book.title}}</h2>
+      <p class="author">{{book.authorName}}</p>
+      <p>Voor het eerst verschenen in: {{book.year}}</p>
+      <img src="{{book.img}}">
+      <p class="rating" *ngIf="book.rating">
+        <span class="w3-text-win-metro-yellow" *ngFor="let n of [1,2,3,4,5]">{{book.rating >= n ? '★' : '☆' }}</span>
+      </p>
+      <p *ngIf="book.onReadingList">Op leeslijst: <span>{{book.onReadingList ? "ja" : "nee"}}</span></p>      
+      <p *ngIf="book.owned">In bezit: <span> {{book.owned ? "ja" : "nee" }}</span></p>      
+      <p *ngIf="book.lentTo">Uitgeleend aan: <span>{{book.lentTo}}</span></p>
+      
+      <div class="clear">
+        <div *ngIf="book.description">
+          <h3>Beschrijving</h3>
+          <p [innerHTML]="book.description"></p>
+        </div>
+        <div class="w3-bar w3-padding-32">
+          <button class="go-to-edit w3-button w3-win-metro-dark-orange" (click)="goToEditBook()">Boekinfo wijzigen</button>
+          <button class="go-to-author w3-button w3-win-metro-dark-orange" (click)="goToAuthor(book.authorId)">Ga naar schrijver</button>
+          <span *ngIf="!showDeleteConfirm">
+            <button class="delete-book w3-button w3-win-metro-dark-orange" (click)="deleteBook()">Verwijder dit boek</button>
+          </span>
+        </div>
+        <div *ngIf="showDeleteConfirm" class="w3-modal">
+          <div class="w3-modal-content">
+            <h2 class="w3-container w3-win-metro-dark-blue">Boek verwijderen?</h2>
+            <div class="w3-container w3-bar w3-padding-64">
+              <button class="cancel-delete w3-button w3-win-metro-dark-orange w3-margin-right" (click)="cancelDelete()"><span class="bold">X</span>&nbsp;&nbsp;Nee</button>
+              <button class="confirm-delete w3-button w3-win-metro-dark-orange w3-margin-left" (click)="confirmDelete(book)"><span class="bold">&#10004;</span>&nbsp;&nbsp;Ja</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <ng-template #noBookBlock>
+    <div class="no-item w3-panel w3-pale-yellow" *ngIf="!searching">
+      <p>Het boek dat je zoekt is niet opgeslagen. Je kunt het toevoegen met '+ Nieuw boek'.</p>
+    </div>
+  </ng-template>
+
+  <div class="spinner" *ngIf="searching" [innerHTML]="spinner">
+  </div>
+  
+</div>

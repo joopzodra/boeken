@@ -1,0 +1,29 @@
+<div id="authorlist">
+
+  <div class="searchbar-container w3-win-metro-light-blue">
+    <form #form="ngForm" class="w3-border">
+      <input type="text" name="query"  [ngModel]="query" placeholder="Zoek op de naam van de schrijver ..." class="w3-input w3-border-0">
+      <button (click)=clearInput() class="w3-button w3-light-gray">&times;</button>
+    </form>
+  </div>
+
+  <div class="list-container w3-container">    
+    <div *ngIf="authors$ | async as authors">
+      <ul *ngIf="!searching" class="w3-ul">
+        <li *ngFor="let author of authors" (click)="onSelect(author)">
+          <p>{{author.name}}</p>
+          <img src="{{author.imgSmall}}">
+        </li>
+      </ul>
+      <div *ngIf="authors.length === 0 && form.pristine" class="no-item w3-panel w3-pale-yellow">
+        <p>Er zijn geen schrijvers opgeslagen. Je kunt boeken toevoegen met '+ Nieuw boek'. Dan wordt ook de schrijver opgeslagen.</p>
+      </div>
+      <div *ngIf="authors.length === 0 && form.dirty" class="no-item w3-panel w3-pale-yellow">
+        <p>Er zijn geen schrijvers opgeslagen die aan je zoekcriteria voldoen. Je kunt boeken toevoegen met '+ Nieuw boek'. Dan wordt ook de schrijver opgeslagen.</p>
+      </div>
+    </div>
+    <div class="spinner" *ngIf="searching" [innerHTML]="spinner">
+    </div>
+  </div>
+
+</div>

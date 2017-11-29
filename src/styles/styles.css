@@ -1,0 +1,59 @@
+/* Content jumps when y-scrollbars appear/disappear in the browser. This happens when switching between lists that vertically overflow the page and lists that don't. So as a fix, better always show scrollbars. */
+html {
+  overflow-y: scroll;
+}
+/* ========= */
+
+#app, #app h1, #app h2, #app h3 {
+  font-family: 'Montserrat', sans-serif;  
+}
+input {
+  font-size: 16px;
+}
+.w3-button:hover {
+  color: #fff !important;
+  background-color: #da532c !important; /* color: w3-win-metro-dark-orange */
+}
+.searchbar-container {
+  position: fixed;
+  top: 185px; /* same as main-container padding-top; see app.component.css */
+  width: 98%;
+  max-width: 666px;
+  padding: 16px;
+}
+.list-container {
+  margin-top:  60px;
+}
+.bold {
+  font-weight: 700;
+}
+li {
+  cursor: pointer;
+}
+li p {
+  margin: 0;
+}
+li img {
+  margin-bottom: 0;
+}
+h3 {
+  font-weight: 300;
+  font-size: 18px;
+}
+.w3-modal {
+  display: block;
+}
+.w3-modal-content {
+  max-width: 600px;
+  margin-top: 150px;
+}
+@media (min-width: 420px) {
+  .searchbar-container  {
+    top: 195px;
+  }  
+}
+@media (min-width: 601px) {
+  .searchbar-container {
+    top: 116px; /* same as main-container padding-top; see app.component.css */
+  }
+}

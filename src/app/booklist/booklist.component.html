@@ -1,0 +1,44 @@
+<main id="booklist">
+
+  <div class="searchbar-container w3-win-metro-light-blue">
+    <form #form="ngForm" class="w3-border">
+      <input type="text" name="query"  [ngModel]="query" placeholder="Zoek op de titel van boeken ..." class="w3-input w3-border-0">
+      <button (click)=clearInput() class="w3-button w3-light-gray">&times;</button>
+    </form>
+  </div>
+
+  <div class="list-container w3-container"> 
+    <div *ngIf="populateError$ | async" class="error w3-panel w3-pale-red">   
+      <p >Er is een probleem met het ophalen van de data. Je kunt proberen de app opnieuw te laden; misschien lukt het dan wel de data op te halen.</p>
+    </div>
+
+    <div *ngIf="books$ | async as books">
+      <ul *ngIf="!searching" class="w3-ul">
+        <li *ngFor="let book of books" (click)="onSelect(book)">
+          <p class="bold">{{book.title}}</p>
+          <div class="image-container">
+            <img src="{{book.imgSmall}}">
+            <div class="author-and-rating-container">
+              <p>{{book.authorName}}</p>
+              <p *ngIf="book.rating">
+                <span class="w3-text-win-metro-yellow" *ngFor="let n of [1,2,3,4,5]">{{book.rating >= n ? '★' : '☆' }}</span>
+              </p>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <div *ngIf="!searching">
+        <div *ngIf="books.length === 0 && form.pristine && !(populateError$ | async)" class="no-item w3-panel w3-pale-yellow">
+          <p>Er zijn geen boeken opgeslagen. Je kunt boeken toevoegen met '+ Nieuw boek'.</p>
+        </div>
+        <div *ngIf="books.length === 0 && form.dirty" class="no-item w3-panel w3-pale-yellow">
+          <p>Er zijn geen boeken opgeslagen die aan je zoekcriteria voldoen. Je kunt boeken toevoegen met '+ Nieuw boek'.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="spinner" *ngIf="searching" [innerHTML]="spinner">
+    </div>
+  </div>
+
+</main>
