@@ -6,7 +6,7 @@ The demo is only to explore what you can do with Angular. If you want to track y
 
 ## Angluar 
 
-The app is made with Angular 4. The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.1.
+The app is made with Angular 5. The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
 ## Development server
 
