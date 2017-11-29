@@ -4,7 +4,7 @@ This app is a simple draft for a books catalog app. You can add new books, for w
 
 The demo is only to explore what you can do with Angular. If you want to track your own books and reading list, you'd better do it by using GoodReads.com.
 
-## Angluar 
+## Angular 
 
 The app is made with Angular 5. The project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
