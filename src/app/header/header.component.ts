@@ -7,11 +7,4 @@ import { Component, OnInit } from '@angular/core'
 })
 export class HeaderComponent {
 
-  frontendJRPath: string;
-
-  constructor() {
-    const locationOrigin = window.location.origin;
-    this.frontendJRPath = locationOrigin + '/2016-11-08-boeken';
-  }
-
 }
