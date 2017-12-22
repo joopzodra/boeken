@@ -21,6 +21,11 @@ export class DbService {
   constructor(private db: Database, private dataStore: DataStore) {
     this.data$ = this.dataStore.data$;
     this.populateError$ = this.db.populateError$;
+    this.db.freshPopulated.then((fresh: boolean) => {
+      if (fresh === true) {
+        this.loadBooks('');
+      }
+    });
   }
 
   public loadBooks(query: string): Dexie.Promise<void> {
