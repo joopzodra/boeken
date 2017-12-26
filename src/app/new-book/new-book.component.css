@@ -4,3 +4,15 @@ form {
 .spinner {
   margin-top: 250px;
 }
+.list-container li {
+  clear:  both;
+  overflow: hidden;
+}
+.searchresult-image {
+  float: left;
+  margin: 0 8px 5px 0;
+}
+
+.searchresult-author {
+  font-weight: bold;
+}

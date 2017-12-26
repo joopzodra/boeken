@@ -39,7 +39,7 @@ describe('SearchGoodReadsService', () => {
 
 
   it('searchBooks method requests and receives xml works from GoodReads and converts them to SearchResultItem\'s', () => {
-    const apiUrl = 'http://frontendjr.nl/goodReads/api/search/';
+    const apiUrl = 'https://frontendjr.nl/goodReads/api/search/';
     service.searchBooks('test').subscribe(res => {
       expect(res).toEqual(stubSearchResultItems);
     });
@@ -49,7 +49,7 @@ describe('SearchGoodReadsService', () => {
   });
 
   it('getFullBook request and receives a book from GoodReads and converts it to Book', () => {
-    const apiUrl = 'http://frontendjr.nl/goodReads/api/book/';
+    const apiUrl = 'https://frontendjr.nl/goodReads/api/book/';
     const mB = stubData.books[0];
     const expectedBook = new Book(mB.id, mB.authorId, mB.title, mB.year, undefined, undefined, undefined, undefined, mB.description, '', '', 'Author#10')
     service.getFullBook(stubSearchResultItems[0]).subscribe(res => {
@@ -61,7 +61,7 @@ describe('SearchGoodReadsService', () => {
   });
 
   it('getAuthor request and receives an author from GoodReads and converts it to Author', () => {
-    const apiUrl = 'http://frontendjr.nl/goodReads/api/author/';
+    const apiUrl = 'https://frontendjr.nl/goodReads/api/author/';
     const mA = stubData.authors[0];
     const expectedAuthor = new Author(mA.id, mA.name, '', '')
     service.getAuthor(stubSearchResultItems[0].authorId).subscribe(res => {

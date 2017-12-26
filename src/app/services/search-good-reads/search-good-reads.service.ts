@@ -11,8 +11,8 @@ import { XmlTextFinder } from '../../helpers/xml-text-finder'
 @Injectable()
 export class SearchGoodReadsService {
 
-  private apiUrl = 'http://frontendjr.nl/goodReads/api/';
-  private goodReadsNoPhoto = 'https://s.gr-assets.comassets/nophoto';
+  private apiUrl = 'https://frontendjr.nl/goodReads/api/';
+  private goodReadsNoPhoto = 'https://s.gr-assets.com/assets/nophoto';
   private noPhotoLength = this.goodReadsNoPhoto.length;
 
   constructor(private http: HttpClient) { }

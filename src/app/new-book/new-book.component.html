@@ -11,9 +11,9 @@
   <div *ngIf="searchResultItems$ | async as searchResultItems" class="list-container w3-container">
     <ul *ngIf="!(selectedItem || searching)" class="w3-ul">  
       <li *ngFor="let searchResultItem of searchResultItems" (click)=select(searchResultItem)>
-        <img [src]="searchResultItem.smallImgUrl">
-        <p>{{searchResultItem.title}}</p>
-        <p>{{searchResultItem.authorName}}</p>
+        <img class="searchresult-image" [src]="searchResultItem.smallImgUrl">
+        <p class="searchresult-title">{{searchResultItem.title}}</p>
+        <p class="searchresult-author">{{searchResultItem.authorName}}</p>
       </li>
     </ul>
     <div *ngIf="searchResultItems.length === 0  && !searchError" class="w3-panel w3-pale-yellow">

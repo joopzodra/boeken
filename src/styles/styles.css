@@ -16,7 +16,7 @@ input {
 }
 .searchbar-container {
   position: fixed;
-  top: 185px; /* same as main-container padding-top; see app.component.css */
+  top: 102px; /* same as main-container padding-top; see app.component.css */
   width: 98%;
   max-width: 666px;
   padding: 16px;
@@ -49,11 +49,6 @@ h3 {
 }
 @media (min-width: 420px) {
   .searchbar-container  {
-    top: 195px;
+    top: 116px;
   }  
-}
-@media (min-width: 601px) {
-  .searchbar-container {
-    top: 116px; /* same as main-container padding-top; see app.component.css */
-  }
 }
