@@ -11,7 +11,7 @@ import { HeaderComponent } from './header/header.component'
 
 import { DbService } from './services/db-service/db.service'
 import { DataStore } from './services/stores/data.store'
-import { Database } from './database/database'
+import { Database } from './services/database/database'
 
 @NgModule({
   declarations: [

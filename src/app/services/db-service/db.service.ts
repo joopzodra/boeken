@@ -3,7 +3,7 @@ import Dexie from 'dexie'
 import { Observable } from 'rxjs/Observable'
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 
-import { Database } from '../../database/database'
+import { Database } from '../database/database'
 import { Book } from '../../models/book'
 import { Author } from '../../models/author'
 import { Data } from '../../models/data'
