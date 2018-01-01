@@ -19,3 +19,17 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Running unit tests
 
 Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## App overview
+
+**Global overview**
+
+![Global app diagram](documentation/boeken-container-diagram.jpeg "Global overview")
+
+**Dataflow overview**
+
+![Dataflow overview](documentation/boeken-dataflow-diagram.jpeg "Dataflow overview")
+
+**Navigation overview**
+
+![Navigation overview](documentation/boeken-navigation-diagram.jpeg "Navigation overview")
